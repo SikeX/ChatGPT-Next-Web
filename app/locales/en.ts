@@ -128,6 +128,8 @@ const en: LocaleType = {
     Revert: "Revert",
   },
   Settings: {
+    Donate:
+      "If you like this project, please consider donating to support the development.",
     Title: "Settings",
     SubTitle: "All Settings",
     Danger: {

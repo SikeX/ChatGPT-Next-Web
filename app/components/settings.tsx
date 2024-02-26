@@ -14,6 +14,8 @@ import DownloadIcon from "../icons/download.svg";
 import UploadIcon from "../icons/upload.svg";
 import ConfigIcon from "../icons/config.svg";
 import ConfirmIcon from "../icons/confirm.svg";
+import CoffeeIcon from "../icons/coffee.svg";
+import DonateQrcode from "../icons/donate.png";
 
 import ConnectionIcon from "../icons/connection.svg";
 import CloudSuccessIcon from "../icons/cloud-success.svg";
@@ -119,6 +121,32 @@ function EditPromptModal(props: { id: string; onClose: () => void }) {
       </Modal>
     </div>
   ) : null;
+}
+
+function DonateModal(props: { id: string; onClose: () => void }) {
+  return (
+    <div className="modal-mask">
+      <Modal
+        title={Locale.Settings.Donate}
+        onClose={props.onClose}
+        actions={[
+          <IconButton
+            key=""
+            onClick={props.onClose}
+            text={Locale.UI.Confirm}
+            bordered
+          />,
+        ]}
+      >
+        <img
+          style={{ display: "block", margin: "auto" }}
+          src={DonateQrcode.src}
+          width={300}
+          alt="Donate QR Code"
+        />
+      </Modal>
+    </div>
+  );
 }
 
 function UserPromptModal(props: { onClose?: () => void }) {
@@ -622,6 +650,7 @@ export function Settings() {
   const builtinCount = SearchService.count.builtin;
   const customCount = promptStore.getUserPrompts().length ?? 0;
   const [shouldShowPromptModal, setShowPromptModal] = useState(false);
+  const [shouldShowDonateModal, setShowDonateModal] = useState(false);
 
   const showUsage = accessStore.isAuthorized();
   useEffect(() => {
@@ -678,6 +707,12 @@ export function Settings() {
       </div>
       <div className={styles["settings"]}>
         <List>
+          <ListItem title={Locale.Settings.Donate}>
+            <IconButton
+              icon={<CoffeeIcon />}
+              onClick={() => setShowDonateModal(true)}
+            />
+          </ListItem>
           <ListItem title={Locale.Settings.Avatar}>
             <Popover
               onClose={() => setShowEmojiPicker(false)}
@@ -1180,6 +1215,10 @@ export function Settings() {
 
         {shouldShowPromptModal && (
           <UserPromptModal onClose={() => setShowPromptModal(false)} />
+        )}
+
+        {shouldShowDonateModal && (
+          <DonateModal onClose={() => setShowDonateModal(false)} />
         )}
 
         <DangerItems />
