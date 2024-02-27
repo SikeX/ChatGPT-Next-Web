@@ -147,6 +147,7 @@ const cn = {
       All: "所有语言",
     },
     Avatar: "头像",
+    Donate: "如果您觉得该工具有用，可以选择请我喝杯咖啡",
     FontSize: {
       Title: "字体大小",
       SubTitle: "聊天内容的字体大小",
