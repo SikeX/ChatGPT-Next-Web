@@ -123,7 +123,7 @@ function EditPromptModal(props: { id: string; onClose: () => void }) {
   ) : null;
 }
 
-function DonateModal(props: { id: string; onClose: () => void }) {
+function DonateModal(props: { onClose: () => void }) {
   return (
     <div className="modal-mask">
       <Modal
