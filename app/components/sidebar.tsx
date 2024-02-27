@@ -152,7 +152,7 @@ export function SideBarContainer(props: {
       {children}
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          NextChat
+          SikeChat
         </div>
         <div className={styles["sidebar-sub-title"]}>
           Always remember to be happy.
